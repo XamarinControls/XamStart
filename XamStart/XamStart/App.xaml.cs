@@ -10,7 +10,9 @@ using XamStart.ViewModels;
 using XamStart.Helpers;
 using System.Runtime.CompilerServices;
 
+#if (DEBUG == false)
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
+#endif
 namespace XamStart
 {
 	public partial class App : Application
@@ -62,10 +64,7 @@ namespace XamStart
             });
 
         }
-       private void EndSubscriptions()
-        {
-            MessagingCenter.Unsubscribe<IForSendingMessageToAppStart, string>(this, "MessageSend");
-        }
+       
         protected override void OnStart ()
 		{
             StartSubscriptions();
@@ -74,7 +73,6 @@ namespace XamStart
 
 		protected override void OnSleep ()
 		{
-            EndSubscriptions();
 			// Handle when your app sleeps
 		}
 

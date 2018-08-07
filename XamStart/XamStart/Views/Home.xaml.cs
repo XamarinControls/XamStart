@@ -9,7 +9,6 @@ using Xamarin.Forms.Xaml;
 
 namespace XamStart.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Home : ContentPage
 	{
 		public Home ()

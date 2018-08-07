@@ -11,7 +11,6 @@ using XamStart.Models;
 
 namespace XamStart.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MDPage : MasterDetailPage, IMDPage
     {
         public MDPage()

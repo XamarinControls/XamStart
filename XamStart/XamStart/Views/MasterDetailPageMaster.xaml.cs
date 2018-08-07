@@ -12,7 +12,6 @@ using Xamarin.Forms.Xaml;
 
 namespace XamStart.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MasterDetailPageMaster : ContentPage
     {
         public ListView ListView;
