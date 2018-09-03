@@ -11,5 +11,6 @@ namespace XamStart.Interfaces
         ErrorItem LastError{ get; set; }
         User SelectedUser { get; set; }
         string Token { get; set; }
+        Type DesiredMasterDetailDetailPage { get; set; }
     }
 }

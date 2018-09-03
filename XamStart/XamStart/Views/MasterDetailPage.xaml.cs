@@ -13,11 +13,12 @@ namespace XamStart.Views
 {
     public partial class MDPage : MasterDetailPage, IMDPage
     {
+        public Page MDPDetail;  // only used in NavigationService reference
         public MDPage()
         {
             InitializeComponent();
             MasterPage.ListView.ItemSelected += ListView_ItemSelected;
-            
+            MDPDetail = this.Detail;  // only used in NavigationService reference
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

@@ -15,6 +15,6 @@ namespace XamStart.Factories
         public ErrorItem LastError { get; set; }
         public User SelectedUser { get; set; }
         public string Token { get; set; }
-        
+        public Type DesiredMasterDetailDetailPage { get; set; }
     }
 }

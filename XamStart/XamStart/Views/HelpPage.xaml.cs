@@ -9,7 +9,8 @@ namespace XamStart.Views
     {
         public HelpPage()
         {
-            InitializeComponent();   
+            InitializeComponent();
+
         }
         protected override void OnAppearing()
         {

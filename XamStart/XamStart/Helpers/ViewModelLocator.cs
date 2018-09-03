@@ -43,12 +43,16 @@ namespace XamStart.Helpers
             Container.RegisterType<ICurrentlySelectedFactory, CurrentlySelectedFactory>(new ContainerControlledLifetimeManager());
             Container.RegisterType<IAPIFactory, APIFactory>(new ContainerControlledLifetimeManager());
             Container.RegisterType<ILoginService, LoginService>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<INavigationService, NavigationService>(new ContainerControlledLifetimeManager());
 
 
             // Views
             Container.RegisterType<ILoginPage, LoginPage>();
-            Container.RegisterType<IMDPage, MDPage>();
+            Container.RegisterType<IMDPage, MDPage>(new MDPageLifetimeManager());
             Container.RegisterType<IErrorPage, ErrorPage>();
+            Container.RegisterType<IHelpPage, HelpPage>();
+            Container.RegisterType<IHomePage, Home>();
+            Container.RegisterType<ISettingsPage, SettingsPage>();
 
             // ViewModels
             Container.RegisterType<IErrorPageViewModel, ErrorPageViewModel>();

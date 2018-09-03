@@ -12,7 +12,7 @@ using Xamarin.Forms.Xaml;
 
 namespace XamStart.Views
 {
-    public partial class ErrorPage : ContentPageBase, IErrorPage, IForSendingMessageToAppStart
+    public partial class ErrorPage : ContentPageBase, IErrorPage
     {
         public ErrorPage()
         {

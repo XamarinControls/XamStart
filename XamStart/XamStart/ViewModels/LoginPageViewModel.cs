@@ -12,13 +12,15 @@ using Unity;
 
 namespace XamStart.ViewModels
 {
-    public class LoginPageViewModel : BaseViewModel, ILoginPageViewModel, IForSendingMessageToAppStart
+    public class LoginPageViewModel : BaseViewModel, ILoginPageViewModel
     {
         ILoginService loginService;
-        
-        public LoginPageViewModel(ICurrentlySelectedFactory currentlySelectedFactory, ILoginService loginService) : base(currentlySelectedFactory)
+        INavigationService navigationService;
+
+        public LoginPageViewModel(ICurrentlySelectedFactory currentlySelectedFactory, ILoginService loginService, INavigationService navigationService) : base(currentlySelectedFactory)
         {
             this.loginService = loginService;
+            this.navigationService = navigationService;
         }
 
 
@@ -39,7 +41,10 @@ namespace XamStart.ViewModels
         }
 
 
-        private void HandleGoodResult() => MessagingCenter.Send<IForSendingMessageToAppStart, string>(this, "MessageSend", "Authenticated");
+        private void HandleGoodResult() {
+            currentlySelectedFactory.DesiredMasterDetailDetailPage = typeof(IHomePage);
+            navigationService.RootNavigate(typeof(IMDPage));
+        }
 
         private void HandleBadResult()
         {
@@ -55,7 +60,7 @@ namespace XamStart.ViewModels
             
         }
 
-        private void RaiseHTMLError() => MessagingCenter.Send<IForSendingMessageToAppStart, string>(this, "MessageSend", "HTML Error");
+        private void RaiseHTMLError() => navigationService.RootNavigate(typeof(IErrorPage));
 
         private void SendErrorToView(string issue) => MessagingCenter.Send<ILoginPageViewModel, Tuple<string, string>>(this, "MessageSend", new Tuple<string, string>("Authentication Failed", issue));
 

@@ -9,11 +9,13 @@ using XamStart.Interfaces;
 
 namespace XamStart.ViewModels
 {
-    public class LogoutPageViewModel : BaseViewModel, ILogoutPageViewModel, IForSendingMessageToAppStart
+    public class LogoutPageViewModel : BaseViewModel, ILogoutPageViewModel
     {
         IPlatformLogout platformLogout;
-        public LogoutPageViewModel(ICurrentlySelectedFactory currentlySelectedFactory, IPlatformLogout platformLogout) : base(currentlySelectedFactory)
+        INavigationService navigationService;
+        public LogoutPageViewModel(ICurrentlySelectedFactory currentlySelectedFactory, IPlatformLogout platformLogout, INavigationService navigationService) : base(currentlySelectedFactory)
         {
+            this.navigationService = navigationService;
             this.platformLogout = platformLogout;
             LogoutCommand = new Command(Logout);
             CancelCommand = new Command(Cancel);
@@ -24,12 +26,12 @@ namespace XamStart.ViewModels
 
         private void Cancel()
         {
-            MessagingCenter.Send<IForSendingMessageToAppStart, string>(this, "MessageSend", "Home");
+            navigationService.MDDetailPageNavigate(typeof(IHomePage));
         }
         private void Logout()
         {
             platformLogout.Logout();
-            MessagingCenter.Send<IForSendingMessageToAppStart, string>(this, "MessageSend", "Logout");
+            navigationService.RootNavigate(typeof(ILoginPage));
         }
     }
 }

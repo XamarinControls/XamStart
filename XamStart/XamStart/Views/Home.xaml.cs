@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamStart.Interfaces;
 
 namespace XamStart.Views
 {
-	public partial class Home : ContentPage
+	public partial class Home : ContentPage, IHomePage
 	{
 		public Home ()
 		{

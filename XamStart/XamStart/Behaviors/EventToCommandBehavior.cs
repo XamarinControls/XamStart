@@ -58,7 +58,7 @@ namespace XamStart.Behaviors
             {
                 return;
             }
-
+            
             EventInfo eventInfo = AssociatedObject.GetType().GetRuntimeEvent(name);
             if (eventInfo == null)
             {
