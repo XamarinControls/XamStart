@@ -15,13 +15,6 @@ namespace XamStart.ViewModels
         IToastService toastService;
         INavigationService navigationService;
 
-        string navigationTrick;
-        public string NavigationTrick
-        {
-            get { return navigationTrick; }
-            set { SetProperty(ref navigationTrick, value); }
-        }
-
         public HomePageViewModel(ICurrentlySelectedFactory currentlySelectedFactory, IToastService toastService, INavigationService navigationService) : base(currentlySelectedFactory)
         {
             Title = "My Home!!!";
