@@ -2,7 +2,7 @@
 
 ## Using:
 * .NetStandard 2.0
-* Xamarin Forms 3.0
+* Xamarin Forms 3.4.0.1008975
 * Unity (for IoC because it was the only solution that didn't cause application bloat)
 * Microsoft App Center for analytics
 
@@ -24,5 +24,5 @@
 * UWP
 
 ## My Environment
-* Windows 10 with April 2018 update
-* Visual Studio Enterprise v15.7.3
+* Windows 10.0.17134.0
+* Visual Studio Enterprise v15.9.3
