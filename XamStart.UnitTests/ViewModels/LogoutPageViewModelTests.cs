@@ -14,6 +14,7 @@ namespace XamStart.UnitTests.ViewModels
     public class LogoutPageViewModelTests : BaseSetup
     {
         Mock<IPlatformLogout> logoutService;
+        Mock<INavigationService> navigationService;
         LogoutPageViewModel sut;
         string _AppMessage;
 
@@ -24,9 +25,9 @@ namespace XamStart.UnitTests.ViewModels
             _AppMessage = "";
             SetupBaseMocks();
             logoutService = new Mock<IPlatformLogout>();
-            MessagingCenter.Subscribe<IForSendingMessageToAppStart, string>(this, "MessageSend", (sender, args) => {
-                _AppMessage = args;
-            });
+            //MessagingCenter.Subscribe<IForSendingMessageToAppStart, string>(this, "MessageSend", (sender, args) => {
+            //    _AppMessage = args;
+            //});
         }
         #endregion
 
@@ -35,7 +36,7 @@ namespace XamStart.UnitTests.ViewModels
         {
             // arrange     
             logoutService.Setup(x => x.Logout());
-            sut = new LogoutPageViewModel(currentlySelectedFactory.Object, logoutService.Object);
+            sut = new LogoutPageViewModel(currentlySelectedFactory.Object, logoutService.Object, navigationService.Object);
 
             // act
             sut.LogoutCommand.Execute(null);
@@ -53,7 +54,7 @@ namespace XamStart.UnitTests.ViewModels
         [TestCleanup]
         public void Cleanup()
         {
-            MessagingCenter.Unsubscribe<IForSendingMessageToAppStart, string>(this, "MessageSend");
+            //MessagingCenter.Unsubscribe<IForSendingMessageToAppStart, string>(this, "MessageSend");
         }
 
         #endregion

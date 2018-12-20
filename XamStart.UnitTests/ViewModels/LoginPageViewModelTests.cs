@@ -14,6 +14,7 @@ namespace XamStart.UnitTests.ViewModels
     public class LoginPageViewModelTests : BaseSetup
     {
         Mock<ILoginService> loginService;
+        Mock<INavigationService> navigationService;
         LoginPageViewModel sut;
         string _AppMessage;
         string _LoginPageMessageKey;
@@ -28,9 +29,9 @@ namespace XamStart.UnitTests.ViewModels
             _LoginPageMessageValue = "";
             SetupBaseMocks();
             loginService = new Mock<ILoginService>();
-            MessagingCenter.Subscribe<IForSendingMessageToAppStart, string>(this, "MessageSend", (sender, args) => {
-                _AppMessage = args;
-            });
+            //MessagingCenter.Subscribe<IForSendingMessageToAppStart, string>(this, "MessageSend", (sender, args) => {
+            //    _AppMessage = args;
+            //});
             MessagingCenter.Subscribe<ILoginPageViewModel, Tuple<string, string>>(this, "MessageSend", (sender, args) => {
                 _LoginPageMessageKey = args.Item1;
                 _LoginPageMessageValue = args.Item2;
@@ -44,7 +45,7 @@ namespace XamStart.UnitTests.ViewModels
             // arrange     
             currentlySelectedFactory.Setup(x => x.SelectedUser).Returns(new Models.User() { fullName = "Clay", email = "some@email.com" });
             loginService.Setup(x => x.Login()).Returns(Task.FromResult(true));
-            sut = new LoginPageViewModel(currentlySelectedFactory.Object, loginService.Object);
+            sut = new LoginPageViewModel(currentlySelectedFactory.Object, loginService.Object, navigationService.Object);
 
             // act
             sut.LoadedCommand.Execute(null);
@@ -69,7 +70,7 @@ namespace XamStart.UnitTests.ViewModels
             //currentlySelectedFactory.Setup(x => x.LastError).Returns(new Models.ErrorItem() { issue = "Some Error"});
             currentlySelectedFactory.Setup(x => x.SelectedUser).Returns(new Models.User() { Error = new Models.ErrorItem() { issue = "Some Error"} });
             loginService.Setup(x => x.Login()).Returns(Task.FromResult(false));
-            sut = new LoginPageViewModel(currentlySelectedFactory.Object, loginService.Object);
+            sut = new LoginPageViewModel(currentlySelectedFactory.Object, loginService.Object, navigationService.Object);
 
             // act
             sut.LoadedCommand.Execute(null);
@@ -95,7 +96,7 @@ namespace XamStart.UnitTests.ViewModels
             currentlySelectedFactory.Setup(x => x.SelectedUser).Returns(new Models.User() { Error = new Models.ErrorItem() { issue = "<!DOCTYPE html>", isHTML = true } });
             //currentlySelectedFactory.Setup(x => x.LastError).Returns(new Models.ErrorItem() { issue = "<!DOCTYPE html>", isHTML = true});
             loginService.Setup(x => x.Login()).Returns(Task.FromResult(false));
-            sut = new LoginPageViewModel(currentlySelectedFactory.Object, loginService.Object);
+            sut = new LoginPageViewModel(currentlySelectedFactory.Object, loginService.Object, navigationService.Object);
 
             // act
             sut.LoadedCommand.Execute(null);
@@ -116,7 +117,7 @@ namespace XamStart.UnitTests.ViewModels
         [TestCleanup]
         public void Cleanup()
         {
-            MessagingCenter.Unsubscribe<IForSendingMessageToAppStart, string>(this, "MessageSend");
+            //MessagingCenter.Unsubscribe<IForSendingMessageToAppStart, string>(this, "MessageSend");
             MessagingCenter.Unsubscribe<ILoginPageViewModel, Tuple<string, string>>(this, "MessageSend");
         }
 
