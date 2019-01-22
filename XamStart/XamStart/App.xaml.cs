@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 using XamStart.ViewModels;
 using XamStart.Helpers;
 using System.Runtime.CompilerServices;
+using FFImageLoading.Svg.Forms;
 
 #if (DEBUG == false)
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
@@ -21,6 +22,7 @@ namespace XamStart
         public App ()
 		{
 			InitializeComponent();
+            var x = new SvgImageSourceConverter();
             var navigateService = ViewModelLocator.Container.Resolve<INavigationService>();
             navigateService.RootNavigate(typeof(ILoginPage));
         }
