@@ -39,7 +39,8 @@ namespace XamStart.UWP
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-
+            // use the following line to grab a new guid, then replace the one in the Package.appxmanifest under packaging:"Package Name"
+            // System.Guid desiredGuid = System.Guid.NewGuid();
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
             Frame rootFrame = Window.Current.Content as Frame;
 
