@@ -33,15 +33,6 @@
 	<key>CFBundleName</key>
 	<string>XamStart</string>
 	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcon.appiconset</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>appcenter-9e4e0c28-c205-4ffb-b44a-a42545d4271b</string>
-			</array>
-		</dict>
-	</array>
+	<string>Assets.xcassets/AppIcon.appiconset</string>	
 </dict>
 </plist>

@@ -1,9 +1,6 @@
 ﻿using XamStart.Interfaces;
-using System;
-using Unity;
 
 using Xamarin.Forms;
-using Microsoft.AppCenter.Analytics;
 
 namespace XamStart.Views
 {

@@ -40,7 +40,7 @@ namespace XamStart.UWP
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
 
-
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,

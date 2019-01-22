@@ -2,7 +2,6 @@
 using System;
 using Xamarin.Forms;
 using System.Threading.Tasks;
-using Microsoft.AppCenter.Analytics;
 using XamStart.Views;
 using XamStart.ViewModels;
 

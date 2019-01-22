@@ -2,10 +2,25 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamStart.Views.Home"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"           
+	         xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              BindingContext="{Binding HomePageViewModel, Source={StaticResource Locator}}"
              xmlns:Behaviors="clr-namespace:XamStart.Behaviors" >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ffimageloadingsvg:SvgImageSourceConverter x:Key="SvgImageSourceConverter">
+            </ffimageloadingsvg:SvgImageSourceConverter>
+            <x:String x:Key="StarImage">resource://XamStart.Resources.baseline-grade-24px.svg</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
+            <ffimageloading:CachedImage 
+                    Source="{Binding Source={StaticResource StarImage}, Converter={StaticResource SvgImageSourceConverter}}"
+                    HeightRequest="200"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="Center">
+            </ffimageloading:CachedImage>
             <Label Text="Home Page!"
                 VerticalOptions="Center" 
                 HorizontalOptions="CenterAndExpand" />

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using FFImageLoading;
+using FFImageLoading.Forms.Platform;
 using Foundation;
 using UIKit;
 
@@ -22,8 +23,10 @@ namespace XamStart.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            
+
             global::Xamarin.Forms.Forms.Init();
-            //Distribute.DontCheckForUpdatesInDebug();
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

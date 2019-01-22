@@ -1,5 +1,4 @@
-﻿using Microsoft.AppCenter.Analytics;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,12 +25,10 @@ namespace XamStart.Views
         }
         protected void Track(string str)
         {
-#if (DEBUG == false)
-            Analytics.TrackEvent(str);
-#endif
+            // if you are using analytics, place your analytics code here
         }        
 
-        protected double getDevicePaddingWhenToolbarIsUsed()
+        protected double GetDevicePaddingWhenToolbarIsUsed()
         {
             double topPadding;
 
