@@ -22,6 +22,7 @@ namespace XamStart
         public App ()
 		{
 			InitializeComponent();
+            // DO NOT DELETE THIS NEXT LINE!  See https://github.com/luberda-molinet/FFImageLoading/issues/663
             var x = new SvgImageSourceConverter();
             var navigateService = ViewModelLocator.Container.Resolve<INavigationService>();
             navigateService.RootNavigate(typeof(ILoginPage));
